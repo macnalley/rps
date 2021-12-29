@@ -1,2 +1,1 @@
-# odin-rps
-Rock, paper, scissors game. For the Odin Project curriculum.
+Rock, paper, game for the Odin Project curriculum. Intended to demonstrate basic javascript scripting.

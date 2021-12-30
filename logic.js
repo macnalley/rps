@@ -1,11 +1,23 @@
 let playerScore = 0;
 let computerScore = 0;
 
-for (i = 0; i < 5; i++) {
+//Game loop
+
+while (playerScore < 3 && computerScore < 3) {
     game();
     console.log(`Player wins: ${playerScore}.`);
     console.log(`Computer wins: ${computerScore}.`);
+    console.log();
+
 }
+
+//Win message
+
+if (playerScore > computerScore) {
+    alert("You won!");
+} else alert("Sorry, you lost.");
+
+//Game functions
 
 function game() {
     const playerInput = prompt("Choose your hand: Rock, Paper, or Scissors.", "What to choose ...?");

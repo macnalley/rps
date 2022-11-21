@@ -1,97 +1,125 @@
 let playerScore = 0;
 let computerScore = 0;
 
-//Game loop
+let resultMessage = '';
+let playerHand = '';
+let computerHand = '';
 
-while (playerScore < 3 && computerScore < 3) {
-    game();
-    console.log(`Player wins: ${playerScore}.`);
-    console.log(`Computer wins: ${computerScore}.`);
-    console.log();
 
+// Selecting DOM elements
+const handButtons = document.querySelectorAll('.hand');
+const results = document.querySelector('#results');
+const playerScoreText = document.querySelector('#playerScore');
+const computerScoreText = document.querySelector('#computerScore');
+const resetBtn = document.querySelector('#reset');
+
+// Assigning event listeners
+
+addEvents();
+resetBtn.addEventListener('click', reset);
+
+function addEvents() {
+    handButtons.forEach(button => button.addEventListener('click', startRound));
+}
+f
+function removeEvents() {
+    handButtons.forEach(button => button.removeEventListener('click', startRound));
 }
 
-//Win message
+// Game functions
 
-if (playerScore > computerScore) {
-    alert("You won!");
-} else alert("Sorry, you lost.");
+function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    resultMessage = '';
 
-//Game functions
+    addEvents();
 
-function game() {
-    const playerInput = prompt("Choose your hand: Rock, Paper, or Scissors.", "What to choose ...?");
+    updateResults();
+}
+
+function startRound(e) {
+    const playerNum = handToNumber(e.target.id);playerHand = e.target.id;
+
     const computerNum = computerPlay();
-
-    let computerHand = numberToHand(computerNum);
-    let playerNum = handToNumber(playerInput);
-    let playerHand = numberToHand(playerNum);
-    var winner;
+    computerHand = numberToHand(computerNum);
 
     playRound(playerNum, computerNum);
-    findWinner();
 
+    // Checks scores and ends game if one equals five
+    endGame();
+}
 
-    function handToNumber(hand) {
-        let handLower = hand.toLowerCase()
+function computerPlay() {
+    return Math.floor(Math.random() * 3 + 1);
+}
 
-        switch (handLower) {
-            case "rock":
-                return 1
-                break;
-            case "paper":
-                return 2
-                break;
-            default:
-                return 3
-                break;
-        }
+function handToNumber(hand) {
+    let handLower = hand.toLowerCase()
+
+    switch (handLower) {
+        case "rock":
+            return 1
+            break;
+        case "paper":
+            return 2
+            break;
+        default:
+            return 3
+            break;
     }
+}
 
-    function computerPlay() {
-        return Math.floor(Math.random() * 3 + 1);
+function numberToHand(number) {
+    switch (number) {
+        case 1:
+            return "rock"
+            break;
+        case 2:
+            return "paper"
+            break;
+        default:
+            return "scissors"
+            break;
     }
+}
 
-    function numberToHand(number) {
-        switch (number) {
-            case 1:
-                return "Rock"
-                break;
-            case 2:
-                return "Paper"
-                break;
-            default:
-                return "Scissors"
-                break;
-        }
+function playRound(playerNum, computerNum) {
+    if (playerNum === computerNum) {
+        resultMessage = 'Tie!'
     }
-
-    function playRound(playerNum, computerNum) {
-        if (playerNum === computerNum) {winner = null}
-        else if (playerNum === 1) {computerNum === 2 ? winner = "computer" : winner = "player"}
-        else if (playerNum === 2) {computerNum === 1 ? winner = "player" : winner = "computer"}
-        else computerNum === 1 ? winner = "computer" : winner = "player"
+    else if (playerNum === 1) {
+        computerNum === 2 ? computerWins() : playerWins();
     }
-
-    function findWinner() {
-        switch (winner) {
-            case "player":
-                playerScore += 1;
-                tabScore();
-                break;
-            case "computer":
-                computerScore +=1;
-                tabScore();
-                break;
-            default:
-                console.log("Tie!")
-                break;
-        }
-    }    
-
-    function tabScore() {
-        console.log(`You chose ${playerHand}. The computer chose ${computerHand}.`);
-        console.log(`Winner: ${winner}.`);
+    else if (playerNum === 2) {
+        computerNum === 1 ? playerWins() : computerWins();
     }
+    else computerNum === 1 ? computerWins() : playerWins();
 
+    updateResults();
+}
+
+function updateResults() {
+    results.textContent = resultMessage;
+    playerScoreText.textContent = playerScore;
+    computerScoreText.textContent = computerScore;
+}
+
+function playerWins() {
+    playerScore += 1;
+    resultMessage = `You chose ${playerHand}. The computer chose ${computerHand}. You won!`;
+}
+
+function computerWins() {
+    computerScore += 1;
+    resultMessage = `You chose ${playerHand}. The computer chose ${computerHand}. You lost!`;
+}
+
+function endGame () {
+    if (playerScore === 5 || computerScore === 5) {
+        const winner = playerScore > computerScore ? "You" : "The computer";
+        alert(`${winner} won!`); 
+
+        removeEvents();
+    }
 }

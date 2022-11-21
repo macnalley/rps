@@ -3,11 +3,22 @@
     <head>
         <title>Rock, Paper, Scissors</title>
         <meta charset="UTF-8">
+        <script src="logic.js" defer></script>
     </head>
     <body>
         <h1>Rock, Paper, Scissors</h1>
-        <p>Please open the console to play.</p>
-        <p>Best three of five wins.</p>
-        <script src="logic.js"></script>
+        <h2>Scores</h2>
+        <p>You: 
+            <span id="playerScore">0</span>
+        </p>
+        <p>Computer: 
+            <span id="computerScore">0</span>
+        </p>
+        <p>Select a hand.</p>
+        <button class="hand" id="rock">Rock</button>
+        <button class="hand" id="paper">Paper</button>
+        <button class="hand" id="scissors">Scissors</button>
+        <div id="results"></div>
+        <button id="reset">Reset</button>
     </body>
 </html>

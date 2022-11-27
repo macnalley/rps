@@ -6,19 +6,33 @@
         <script src="logic.js" defer></script>
     </head>
     <body>
-        <h1>Rock, Paper, Scissors</h1>
-        <h2>Scores</h2>
-        <p>You: 
-            <span id="playerScore">0</span>
-        </p>
-        <p>Computer: 
-            <span id="computerScore">0</span>
-        </p>
-        <p>Select a hand.</p>
-        <button class="hand" id="rock">Rock</button>
-        <button class="hand" id="paper">Paper</button>
-        <button class="hand" id="scissors">Scissors</button>
-        <div id="results"></div>
+        <header>
+            <h1>Rock, Paper, Scissors! Battle!</h1>
+        </header>
+        <main>
+            <div class="battle-area">
+                <div class="info computer-info">
+                    <p>Computer: 
+                        <span id="computerScore">0</span>
+                    </p>
+                </div>
+                <div class="choice computer-choice"></div>
+                <div class="info player-info">
+                    <p>You: 
+                        <span id="playerScore">0</span>
+                    </p>
+                </div>
+                <div class="choice player-choice"></div>
+            </div>
+            <div class="menu">
+                <div class="dialogue">
+                    <div id="results"></div>
+                </div>
+                <button class="hand" id="rock">Rock</button>
+                <button class="hand" id="paper">Paper</button>
+                <button class="hand" id="scissors">Scissors</button>
+            </div>  
+        </main>
         <button id="reset">Reset</button>
     </body>
 </html>

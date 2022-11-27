@@ -21,7 +21,7 @@ resetBtn.addEventListener('click', reset);
 function addEvents() {
     handButtons.forEach(button => button.addEventListener('click', startRound));
 }
-f
+
 function removeEvents() {
     handButtons.forEach(button => button.removeEventListener('click', startRound));
 }

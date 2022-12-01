@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rock, Paper, Scissors! Battle!</title>
+        <title>Rock, Paper, Scissors!</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,22 +11,22 @@
     </head>
     <body>
         <header>
-            <h1>Rock, Paper, Scissors! Battle!</h1>
+            <h1>Rock, Paper, Scissors!</h1>
         </header>
         <main>
             <div class="battle-area">
-                <div class="info computer-info">
+                <div class="battle-block info computer-info">
                     <p>Computer: 
                         <span id="computerScore">0</span>
                     </p>
                 </div>
-                <div class="choice computer-choice"></div>
-                <div class="info player-info">
+                <div class="battle-block choice computer-choice"></div>
+                <div class="battle-block choice player-choice"></div>
+                <div class="battle-block info player-info">
                     <p>You: 
                         <span id="playerScore">0</span>
                     </p>
                 </div>
-                <div class="choice player-choice"></div>
             </div>
             <div class="menu">
                 <div class="dialogue">
@@ -36,7 +36,7 @@
                 <button class="hand" id="paper">Paper</button>
                 <button class="hand" id="scissors">Scissors</button>
             </div>  
+            <button id="reset">Reset</button>
         </main>
-        <button id="reset">Reset</button>
     </body>
 </html>

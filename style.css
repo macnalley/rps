@@ -25,6 +25,11 @@ main {
     align-items: center;
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .battle-area {
     height: 300px;
     width: 300px;
@@ -36,4 +41,11 @@ main {
     height: 150px;
     width: 150px;
     flex-shrink: 0;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
 }

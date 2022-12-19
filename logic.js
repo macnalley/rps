@@ -12,10 +12,12 @@ const results = document.querySelector('#results');
 const playerScoreText = document.querySelector('#playerScore');
 const computerScoreText = document.querySelector('#computerScore');
 const resetBtn = document.querySelector('#reset');
+const playerImg = document.querySelector('#player-choice');
+const computerImg = document.querySelector('#computer-choice');
 
 // Assigning event listeners
-
 addEvents();
+
 resetBtn.addEventListener('click', reset);
 
 function addEvents() {
@@ -39,10 +41,13 @@ function reset() {
 }
 
 function startRound(e) {
-    const playerNum = handToNumber(e.target.id);playerHand = e.target.id;
+    const playerNum = handToNumber(e.target.id);
+    playerHand = e.target.id;
+    playerImg.src = `imgs\\${playerHand}.png`;
 
     const computerNum = computerPlay();
     computerHand = numberToHand(computerNum);
+    computerImg.src = `imgs\\${computerHand}.png`;
 
     playRound(playerNum, computerNum);
 

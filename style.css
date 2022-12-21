@@ -5,6 +5,8 @@ body {
     padding: 0px;
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
+
 }
 
 header {
@@ -17,12 +19,17 @@ h1 {
     padding: 20px 20px;
 }
 
+p {
+    margin: 0px;
+}
+
 main {
-    flex-grow: 1;
+    flex-grow: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 img {
@@ -30,22 +37,93 @@ img {
     max-height: 100%;
 }
 
+button {
+    font-family: 'Roboto Mono', Courier, monospace;
+    font-size: 1.5rem;
+    border: 0px;
+    background-color: white;
+    text-align: left;
+}
+
 .battle-area {
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 500px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .battle-block {
-    height: 150px;
-    width: 150px;
+    height: 50%;
+    width: 50%;
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
 }
 
-.player-info {
+.computer-info-battle-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.player-info-battle-block {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.info {
+    padding: 10px;
+    height: 2rem;
+    border-radius: 4px;
+}
+
+.computer-info {
+    border-top: 2px solid black;
+    border-left: 2px solid black; 
+}
+
+.player-info {
     text-align: right;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.dialogue {
+    width: 500px;
+    height: 11rem;
+    margin-top: 1rem;
+    padding: 2px;
+    border: 3px solid black;
+    display: flex;
+}
+
+#results {
+    padding: 10px;
+    border: 2px solid black;
+    width: 100%;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    border: 2px solid black;
+    border-right: 1px;
+    width: 15rem;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-top: .5rem solid transparent;
+	border-left: 1rem solid black;
+	border-bottom: .5rem solid transparent;
+    visibility: hidden;
 }

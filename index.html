@@ -15,32 +15,49 @@
         </header>
         <main>
             <div class="battle-area">
-                <div class="battle-block info computer-info">
-                    <p>Computer: 
-                        <span id="computerScore">0</span>
-                    </p>
+                <div class="battle-block computer-info-battle-block">
+                    <div class="info computer-info">
+                        <p>Rival Wins: 
+                            <span id="computerScore">0</span>
+                        </p>
+                    </div>
                 </div>
                 <div class="battle-block choice computer-choice">
-                    <img class="choice" id="computer-choice" src="">
+                    <img class="choice" id="computer-choice" src="imgs/rival.png">
                 </div>
                 <div class="battle-block choice player-choice">
-                    <img class="choice" id="player-choice" src="">
+                    <img class="choice" id="player-choice" src="imgs/you.png">
                 </div>
-                <div class="battle-block info player-info">
-                    <p>You: 
-                        <span id="playerScore">0</span>
-                    </p>
+                <div class="battle-block player-info-battle-block">
+                    <div class="info player-info">
+                        <p>Your Wins: 
+                            <span id="playerScore">0</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="menu">
-                <div class="dialogue">
-                    <div id="results"></div>
+            <div class="dialogue">
+                <div class="menu">
+                    <div class="menu-item"> 
+                        <div class="triangle" id="rock-triangle"></div>
+                        <button class="hand" id="rock">Rock</button>
+                    </div> 
+                    <div class="menu-item"> 
+                        <div class="triangle" id="paper-triangle"></div>
+                        <button class="hand" id="paper">Paper</button>
+                    </div> 
+                    <div class="menu-item"> 
+                        <div class="triangle" id="scissors-triangle"></div>
+                        <button class="hand" id="scissors">Scissors</button>
+                    </div> 
+                    <div class="menu-item"> 
+                        <div class="triangle" id="reset-triangle"></div>
+                        <button id="reset">Run Away</button>
+                    </div>
                 </div>
-                <button class="hand" id="rock">Rock</button>
-                <button class="hand" id="paper">Paper</button>
-                <button class="hand" id="scissors">Scissors</button>
-            </div>  
-            <button id="reset">Reset</button>
+                <div id="results">Your RIVAL wants to fight! Choose your hand!</div>
+                </div>
+            </div>
         </main>
     </body>
 </html>

@@ -14,11 +14,19 @@ const computerScoreText = document.querySelector('#computerScore');
 const resetBtn = document.querySelector('#reset');
 const playerImg = document.querySelector('#player-choice');
 const computerImg = document.querySelector('#computer-choice');
+const buttons = document.querySelectorAll('button');
+const rockTriangle = document.querySelector('#rock-triangle');
+const paperTriangle = document.querySelector('#paper-triangle');
+const scissorsTriangle = document.querySelector('#scissors-triangle');
+const resetTriangle = document.querySelector('#reset-triangle');
 
 // Assigning event listeners
 addEvents();
 
 resetBtn.addEventListener('click', reset);
+
+buttons.forEach(button => button.addEventListener('mouseenter', selectButton));
+buttons.forEach(button => button.addEventListener('mouseleave', deselectButton));
 
 function addEvents() {
     handButtons.forEach(button => button.addEventListener('click', startRound));
@@ -28,12 +36,59 @@ function removeEvents() {
     handButtons.forEach(button => button.removeEventListener('click', startRound));
 }
 
+// UI Functions
+function selectButton (e) { 
+    let id = e.target.id;
+
+    switch (id) {
+        case 'rock':
+            rockTriangle.style.visibility = 'visible';
+            break;
+        case 'paper':
+            paperTriangle.style.visibility = 'visible';
+            break;
+        case 'scissors':
+            scissorsTriangle.style.visibility = 'visible';
+            break;
+        case 'reset':
+            resetTriangle.style.visibility = 'visible';
+                break;
+        default:
+            break;
+    }
+}
+
+function deselectButton(e) {
+    let id = e.target.id;
+
+    switch (id) {
+        case 'rock':
+            rockTriangle.style.visibility = 'hidden';
+            break;
+        case 'paper':
+            paperTriangle.style.visibility = 'hidden';
+            break;
+        case 'scissors':
+            scissorsTriangle.style.visibility = 'hidden';
+            break;
+        case 'reset':
+            resetTriangle.style.visibility = 'hidden';
+                break;
+        default:
+            break;
+    }
+}
+
+
 // Game functions
 
 function reset() {
     playerScore = 0;
     computerScore = 0;
-    resultMessage = '';
+    resultMessage = 'Your RIVAL wants to fight! Choose your hand!';
+
+    playerImg.src = 'imgs\\you.png';
+    computerImg.src = 'imgs\\rival.png';
 
     addEvents();
 
@@ -91,7 +146,7 @@ function numberToHand(number) {
 
 function playRound(playerNum, computerNum) {
     if (playerNum === computerNum) {
-        resultMessage = 'Tie!'
+        resultMessage = `You both chose ${playerHand.toUpperCase()}. Your hands were evenly matched. Try again.`
     }
     else if (playerNum === 1) {
         computerNum === 2 ? computerWins() : playerWins();
@@ -112,18 +167,20 @@ function updateResults() {
 
 function playerWins() {
     playerScore += 1;
-    resultMessage = `You chose ${playerHand}. The computer chose ${computerHand}. You won!`;
+    resultMessage = `You chose ${playerHand.toUpperCase()}. Your RIVAL chose ${computerHand.toUpperCase()}. You won this round!`;
 }
 
 function computerWins() {
     computerScore += 1;
-    resultMessage = `You chose ${playerHand}. The computer chose ${computerHand}. You lost!`;
+    resultMessage = `You chose ${playerHand.toUpperCase()}. Your RIVAL chose ${computerHand.toUpperCase()}. You lost this round!`;
 }
 
 function endGame () {
     if (playerScore === 5 || computerScore === 5) {
-        const winner = playerScore > computerScore ? "You" : "The computer";
-        alert(`${winner} won!`); 
+        const winner = playerScore > computerScore ? "You" : "Your RIVAL";
+        resultMessage = `Your hands are exhausted. ${winner} won!`; 
+        
+        updateResults();
 
         removeEvents();
     }

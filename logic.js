@@ -4,6 +4,8 @@ let computerScore = 0;
 let resultMessage = '';
 let playerHand = '';
 let computerHand = '';
+let playerHandDisplay = '';
+let computerHandDisplay = '';
 
 
 // Selecting DOM elements
@@ -79,6 +81,22 @@ function deselectButton(e) {
     }
 }
 
+function handToDisplayHand(hand) {
+    switch (hand) {
+        case 'rock':
+            return 'rockit'
+            break;
+        case 'paper':
+            return 'paporio'
+            break;
+        case 'scissors':
+            return 'snissors'
+            break;
+        default:
+            break;
+    }
+}
+
 
 // Game functions
 
@@ -145,8 +163,12 @@ function numberToHand(number) {
 }
 
 function playRound(playerNum, computerNum) {
+    
+    playerHandDisplay = handToDisplayHand(playerHand);
+    computerHandDisplay = handToDisplayHand(computerHand);
+    
     if (playerNum === computerNum) {
-        resultMessage = `You both chose ${playerHand.toUpperCase()}. Your hands were evenly matched. Try again.`
+        resultMessage = `You both chose ${playerHandDisplay.toUpperCase()}. Your fighters were evenly matched. Try again.`
     }
     else if (playerNum === 1) {
         computerNum === 2 ? computerWins() : playerWins();
@@ -155,6 +177,7 @@ function playRound(playerNum, computerNum) {
         computerNum === 1 ? playerWins() : computerWins();
     }
     else computerNum === 1 ? computerWins() : playerWins();
+
 
     updateResults();
 }
@@ -167,12 +190,12 @@ function updateResults() {
 
 function playerWins() {
     playerScore += 1;
-    resultMessage = `You chose ${playerHand.toUpperCase()}. Your RIVAL chose ${computerHand.toUpperCase()}. You won this round!`;
+    resultMessage = `You chose ${playerHandDisplay.toUpperCase()}. Your RIVAL chose ${computerHandDisplay.toUpperCase()}. You won this round!`;
 }
 
 function computerWins() {
     computerScore += 1;
-    resultMessage = `You chose ${playerHand.toUpperCase()}. Your RIVAL chose ${computerHand.toUpperCase()}. You lost this round!`;
+    resultMessage = `You chose ${playerHandDisplay.toUpperCase()}. Your RIVAL chose ${computerHandDisplay.toUpperCase()}. You lost this round!`;
 }
 
 function endGame () {
